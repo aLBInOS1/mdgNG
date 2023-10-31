@@ -88,7 +88,6 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unityI=unityInstance;
-          //������ ����
           YaGames.init()
           .then(ysdk => {
                 ysdk.features.LoadingAPI?.ready();
@@ -103,7 +102,7 @@
       };
       document.body.appendChild(script);
     </script>
-    <script src="https://yandex.ru/games/sdk/v2"></script>
+    <script src="http://n3e234e23.yzz.me/ngames-sdk.js"></script>
     <script>
       var player;
       var payments = null;

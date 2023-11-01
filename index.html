@@ -88,13 +88,13 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unityI=unityInstance;
-          YaGames.init()
-          .then(ysdk => {
-                ysdk.features.LoadingAPI?.ready();
-                window.ysdk=ysdk;
-                initPlayer();
-                sendSDKtype();
-          })
+          //YaGames.init()
+          //.then(ysdk => {
+           //     ysdk.features.LoadingAPI?.ready();
+           //     window.ysdk=ysdk;
+            //    initPlayer();
+          //      sendSDKtype();
+          //})
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);

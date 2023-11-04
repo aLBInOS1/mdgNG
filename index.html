@@ -88,6 +88,7 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           unityI=unityInstance;
+          getDeviceInfo();
           //YaGames.init()
           //.then(ysdk => {
            //     ysdk.features.LoadingAPI?.ready();
@@ -141,7 +142,6 @@
             player.getData().then(stats =>{
               console.log('Data is getting');
               console.log(JSON.stringify(stats));
-              getDeviceInfo();
               getLanguage();
               if (JSON.stringify(stats) != "{}") {
                 unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(stats));
@@ -150,7 +150,7 @@
       }
 
     function getDeviceInfo() {
-        var data = ysdk.deviceInfo.type;
+        var data = sdk.GetDeviceInfo();
         unityI.SendMessage('YandexSDK','GettingDevice',data);
     }
 

@@ -89,6 +89,7 @@
         }).then((unityInstance) => {
           unityI=unityInstance;
           getDeviceInfo();
+          getLanguage();
           //YaGames.init()
           //.then(ysdk => {
            //     ysdk.features.LoadingAPI?.ready();
@@ -142,7 +143,6 @@
             player.getData().then(stats =>{
               console.log('Data is getting');
               console.log(JSON.stringify(stats));
-              getLanguage();
               if (JSON.stringify(stats) != "{}") {
                 unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(stats));
               }
@@ -155,8 +155,7 @@
     }
 
     function getLanguage() {
-           var userLang = navigator.language || navigator.userLanguage; 
-           userLang = userLang.substr(0, 2).toLowerCase();
+           var userLang=sdk.GetLanguage();
            unityI.SendMessage('YandexSDK','GettingLanguage',userLang);
            console.log("AL:"+userLang);
     }

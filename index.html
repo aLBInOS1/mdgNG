@@ -90,6 +90,7 @@
           unityI=unityInstance;
           getDeviceInfo();
           getLanguage();
+          getUserData();
           //YaGames.init()
           //.then(ysdk => {
            //     ysdk.features.LoadingAPI?.ready();
@@ -138,7 +139,7 @@
       }
 
   function getUserData(){
-    var data=sdk.GetGameData(_data);
+    var data=sdk.GetGameData();
     unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(data));
   }
 
@@ -153,7 +154,7 @@
            console.log("AL:"+userLang);
     }
 
-  function setUserData(_data){
+    function setUserData(_data){
         console.log('Try Save:'+_data);
         sdk.SetGameData(_data);
     }

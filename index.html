@@ -141,6 +141,8 @@
   function getUserData(){
     var data=sdk.GetGameData();
     console.log(data);
+    data={"data":data};
+    console.log(data);
     unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(data));
   }
 

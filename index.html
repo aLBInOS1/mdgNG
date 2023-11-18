@@ -138,14 +138,9 @@
       }
 
   function getUserData(){
-            player.getData().then(stats =>{
-              console.log('Data is getting');
-              console.log(JSON.stringify(stats));
-              if (JSON.stringify(stats) != "{}") {
-                unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(stats));
-              }
-           });
-      }
+    var data=sdk.GetGameData(_data);
+    unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(data));
+  }
 
     function getDeviceInfo() {
         var data = sdk.GetDeviceInfo();
@@ -159,12 +154,8 @@
     }
 
   function setUserData(_data){
-      if (player!=null) {
-          console.log('Try Save:'+_data);
-          player.setData({data : _data}).then(()=>{
-            console.log('saved');
-          }).catch(()=>{console.log('unsaved')});
-      }
+        console.log('Try Save:'+_data);
+        sdk.SetGameData(_data);
     }
 
       function showFullscrenAd(){

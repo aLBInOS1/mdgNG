@@ -130,7 +130,14 @@
        }
 
       function purchase(itemName) {
-        sdk.MakePurchase("Товар123",30);
+        var value=3;
+        if (itemName=="6UpgPoints") {
+            value=6;
+        }
+        else if (itemName=="9UpgPoints") {
+            value=9;
+        }
+        sdk.MakePurchase(value+" Очков улучшения",30*value,"Получите очки улучшения для внутриигровых покупок!");
       }
 
   function getUserData(){

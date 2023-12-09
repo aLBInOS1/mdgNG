@@ -130,12 +130,7 @@
        }
 
       function purchase(itemName) {
-        if (payments!=null) {
-            payments.purchase({ id: itemName }).then(purchase => {
-                consumePurchase(purchase);
-                window.focus();
-            })
-        }
+        sdk.MakePurchase();
       }
 
   function getUserData(){

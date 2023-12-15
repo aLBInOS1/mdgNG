@@ -125,8 +125,8 @@
       });}
 
       function consumePurchase(purchase) {
-        unityI.SendMessage('YandexSDK','DonateDoned',purchase.productID);
-        payments.consumePurchase(purchase.purchaseToken);
+        //unityI.SendMessage('YandexSDK','DonateDoned',purchase.productID);
+        console.log(purchase);
        }
 
       function purchase(itemName) {
@@ -137,7 +137,7 @@
         else if (itemName=="9UpgPoints") {
             value=9;
         }
-        sdk.MakePurchase(value+" Очков улучшения",30*value);
+        sdk.MakePurchase(consumePurchase,value+" Очков улучшения",30*value);
       }
 
   function getUserData(){

@@ -125,7 +125,14 @@
       });}
 
       function consumePurchase(purchase) {
-        //unityI.SendMessage('YandexSDK','DonateDoned',purchase.productID);
+        var itemId="3UpgPoints";
+        if (purchase.pricw==180) {
+            itemId="6UpgPoints";
+        }
+        else if (purchase.pricw==270) {
+            itemId="9UpgPoints";
+        }
+        unityI.SendMessage('YandexSDK','DonateDoned',itemId);
         console.log(purchase);
        }
 

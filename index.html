@@ -126,10 +126,10 @@
 
       function consumePurchase(purchase) {
         var itemId="3UpgPoints";
-        if (purchase.pricw==180) {
+        if (purchase.price==180) {
             itemId="6UpgPoints";
         }
-        else if (purchase.pricw==270) {
+        else if (purchase.price==270) {
             itemId="9UpgPoints";
         }
         unityI.SendMessage('YandexSDK','DonateDoned',itemId);

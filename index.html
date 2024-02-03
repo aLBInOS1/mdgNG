@@ -156,6 +156,7 @@
   }
 
     function getDeviceInfo() {
+        sdk.GetPlayerInfo();
         var data = sdk.GetDeviceInfo();
         unityI.SendMessage('YandexSDK','GettingDevice',data);
     }

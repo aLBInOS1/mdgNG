@@ -155,8 +155,12 @@
     unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(data));
   }
 
-    function getDeviceInfo() {
-        sdk.GetPlayerInfo();
+  function getPlayerName(data) {
+    unityI.SendMessage('YandexSDK', 'AuthenticateSuccess', data.name);
+  }
+
+    function getDeviceInfo(getUserData) {
+        sdk.GetPlayerInfo(getPlayerName);
         var data = sdk.GetDeviceInfo();
         unityI.SendMessage('YandexSDK','GettingDevice',data);
     }

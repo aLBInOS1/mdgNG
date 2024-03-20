@@ -145,11 +145,11 @@
         else if (itemName=="9UpgPoints") {
             value=9;
         }
-        sdk.MakePurchase(value+" Очков улучшения",30*value, consumePurchase);
+        SigmaGamesSDK.MakePurchase(value+" Очков улучшения",30*value, consumePurchase);
       }
 
   function getUserData(){
-    var data=sdk.GetGameData();
+    var data=SigmaGamesSDK.GetGameData();
     console.log(data);
     data={"data":data};
     console.log(data);
@@ -157,19 +157,19 @@
   }
 
     function getDeviceInfo() {
-        var data = sdk.GetDeviceInfo();
+        var data = SigmaGamesSDK.GetDeviceInfo();
         unityI.SendMessage('YandexSDK','GettingDevice',data);
     }
 
     function getLanguage() {
-           var userLang=sdk.GetLanguage();
+           var userLang=SigmaGamesSDK.GetLanguage();
            unityI.SendMessage('YandexSDK','GettingLanguage',userLang);
            console.log("AL:"+userLang);
     }
 
     function setUserData(_data){
         console.log('Try Save:'+_data);
-        sdk.SetGameData(_data);
+        SigmaGamesSDK.SetGameData(_data);
     }
 
       function showFullscrenAd(){
@@ -197,7 +197,6 @@
 
       function sendSDKtype() { unityI.SendMessage('YandexSDK','SetSDKtype',"1"); }
 
-      //�������������� ��������� �������� ������� (��� �������) 
     var isActive;
     document.addEventListener('visibilitychange', function () {
     if (document.visibilityState == "hidden"&&unityI!=null) {

@@ -21,31 +21,8 @@
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var warningBanner = document.querySelector("#unity-warning");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+      function unityShowBanner(msg, type) {}
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/mdgYA.loader.js";
@@ -60,19 +37,9 @@
         showBanner: unityShowBanner,
       };
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1.4;
-        //unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         canvas.style.width = "100%";
         canvas.style.height = "100%";
@@ -91,13 +58,6 @@
           getDeviceInfo();
           getLanguage();
           getUserData();
-          //YaGames.init()
-          //.then(ysdk => {
-           //     ysdk.features.LoadingAPI?.ready();
-           //     window.ysdk=ysdk;
-            //    initPlayer();
-          //      sendSDKtype();
-          //})
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
@@ -117,9 +77,7 @@
                 var data = player.getName();
                 unityI.SendMessage('YandexSDK', 'AuthenticateSuccess', data);
                 ysdk.getPayments({ signed: true }).then(_payments => {
-                    // ������� ��������.
                     payments = _payments;
-                    //�������� �������������� �������
                     payments.getPurchases().then(purchases => purchases.forEach(consumePurchase));
                 });
       });}
@@ -144,11 +102,7 @@
         else if (itemName=="9UpgPoints") {
             value=9;
         }
-<<<<<<< HEAD
         SigmaGamesSDK.MakePurchase(value+" Очков улучшения",30*value, consumePurchase);
-=======
-        sdk.MakePurchase(value+" Очков улучшения",30*value, consumePurchase, "Очки улучшения позволят вам сильно прокачать своего робота");
->>>>>>> 3ddffa1d0c16ad1c8ac69155b011c76f5a47a780
       }
 
   function getUserData(){
@@ -159,18 +113,8 @@
     unityI.SendMessage('YandexSDK', 'DataGetting', JSON.stringify(data));
   }
 
-<<<<<<< HEAD
     function getDeviceInfo() {
         var data = SigmaGamesSDK.GetDeviceInfo();
-=======
-  function getPlayerName(data) {
-    unityI.SendMessage('YandexSDK', 'AuthenticateSuccess', data.name);
-  }
-
-    function getDeviceInfo(getUserData) {
-        sdk.GetPlayerInfo(getPlayerName);
-        var data = sdk.GetDeviceInfo();
->>>>>>> 3ddffa1d0c16ad1c8ac69155b011c76f5a47a780
         unityI.SendMessage('YandexSDK','GettingDevice',data);
     }
 

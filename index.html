@@ -58,6 +58,7 @@
           getDeviceInfo();
           getLanguage();
           getUserData();
+          showFullscrenAd();
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
@@ -130,7 +131,7 @@
     }
 
       function showFullscrenAd(){
-
+        SigmaGamesSDK.ShowFullscreenAdv();
       }
 
      function showRewardedAd(id){
